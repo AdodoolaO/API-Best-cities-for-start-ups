@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      let cities = [];
+      let countries = [];
+      let totalScores = [];
+
+      async function getData() {
+        let response = await fetch("Best Cities for StartupsOne.csv");
+        let data = await response.text();
+        console.log(data);
+        let row = data.split("\n").slice(1); //want to split up the rows /n = line break/new line
+        console.log(row);
+        row.forEach(function (rows) {
+          splitRow = rows.split(",");
+          //console.log(splitRow);
+          let newRows = splitRow.splice(0, 2);
+          console.log(splitRow); //the new role with elements removed
+          let city = splitRow[0];
+          let country = splitRow[1];
+          let totalScore = splitRow[2];
+
+          let totalScoreRounded = Math.round(totalScore);
+
+          //console.log(country);
+          //console.log(city);
+          console.log(country, city, totalScoreRounded);
+        });
+      }
+      getData();
+    </script>
+  </body>
+</html>
