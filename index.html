@@ -14,15 +14,16 @@
       let totalScores = [];
 
       async function getData() {
-        let response = await fetch("Best Cities for StartupsOne.csv");
-        let data = await response.text();
+        let response = await fetch("Best Cities for StartupsOne.csv"); //fetching csv file
+        let data = await response.text(); //convert response into text form
         console.log(data);
-        let row = data.split("\n").slice(1); //want to split up the rows /n = line break/new line
+        let row = data.split("\n").slice(1); //want to split up by the rows /n = line break/new line
         console.log(row);
         row.forEach(function (rows) {
+          //for each row split by comma
           splitRow = rows.split(",");
-          //console.log(splitRow);
-          let newRows = splitRow.splice(0, 2);
+          // console.log(splitRow);
+          let newRows = splitRow.splice(0, 2); // add/removes elements @ position 0, remove 2 items 
           console.log(splitRow); //the new role with elements removed
           let city = splitRow[0];
           let country = splitRow[1];
